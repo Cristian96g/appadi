@@ -1,3 +1,85 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.active{
+    @apply text-green-900;
+}
+
+@layer base{
+    section{
+        @apply py-[30px];
+    }
+    h2{
+        @apply max-w-2xl mx-auto text-2xl font-semibold tracking-tight text-gray-800 xl:text-4xl;
+    }
+}
+
+@layer components {
+    .container{
+        @apply max-w-full w-[1280px] px-5 mx-auto;
+    }
+
+    .header{
+        @apply  w-full h-[100px] leading-[100px];
+    }
+    .heading{
+        @apply text-[44px] leading-[54px] font-[700] text-headingColor;
+    }
+
+    .text__para{
+        @apply text-[18px] leading-[30px] font-[400] mt-[18px];
+    }
+
+    .th-table {
+        @apply px-4 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left;
+      }
+  
+      .button-table{
+          @apply py-2 px-3 flex items-center text-sm font-medium text-center focus:outline-none  rounded-lg  focus:ring-4 
+      }
+
+      .btn-edit{
+        @apply text-white bg-blue-700 hover:bg-blue-800 focus:ring-blue-300 
+      }
+
+      .btn-preview{
+        @apply text-gray-900 bg-white border border-gray-200 hover:bg-gray-300 hover:text-blue-700 focus:z-10 focus:ring-gray-200 
+      }
+
+      .btn-delete{
+        @apply text-white border border-red-700 bg-red-700 hover:bg-red-900 focus:ring-red-300 font-medium text-sm text-center 
+      }
+    
+}
+
+@media only screen and (max-width: 1024px){
+    .container{
+        @apply w-full;
+    }
+    
+    section{
+        @apply px-[35px];
+    }
+}
+
+@media only screen and (max-width: 768px){
+    .heading{
+        @apply text-[26px] leading-[36px]
+    }
+
+    .text__para{
+        @apply text-[16px] leading-7 mt-3
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    .container {
+        @apply px-2;
+    }
+
+    section {
+        @apply px-0;
+    }
+}
+

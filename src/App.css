@@ -1,7 +1,77 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body {
+  font-family: 'Roboto', sans-serif;
 }
 
+:root{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color-scheme: "white";
+}
+
+.primaryColor{
+  color:#0A732F;
+}
+.yellowColor{
+  color:'#0067FF'
+}
+.purpleColor{
+  color:'#0067FF'
+}
+.bg-primary{
+  background:#038C33;
+}
+.headingColor{
+  color:'#0067FF'
+}
+.hoverColor{
+  background:#A9D9B5;
+}
+.activeColor{
+  background: #0A732F;
+}
+
+
+.th-title{
+  padding-left: 1rem;
+  padding-right: 1rem;
+  vertical-align: middle;
+  border: 0;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  padding: 1rem;
+  text-align: left;
+}
+
+.td-button{
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+
+.input__style {
+  width: 100%;
+  border: 1px solid #0A732F;
+  border-radius: 0.25rem;
+  padding: 0.75rem 14px;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
+.label__style {
+  display: block;
+  font-weight: 500;
+  --tw-text-opacity: 1;
+  color: rgb(17 24 39 / var(--tw-text-opacity));
+  font-size: 0.875rem /* 14px */;
+  line-height: 1.25rem /* 20px */;
+  margin-bottom: 0.5rem /* 8px */;
+}
