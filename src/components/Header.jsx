@@ -63,8 +63,8 @@ const Header = () => {
                 <div className="bg-white py-3 px-4">
                     {navLinks.map((nav) => (
                         <NavLink
-                            key={nav.id}
-                            to={`/${nav.id}`}
+                            key={nav.href}
+                            to={`/${nav.href}`}
                             className="block text-base -m-3 p-3 font-medium text-green-500 hover:text-green-700 hover:bg-gray-50 cursor-pointer"
                             onClick={() => setOpen(false)}
                         >

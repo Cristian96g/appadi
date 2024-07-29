@@ -37,7 +37,7 @@ const Login = () => {
             <section className='container'>
                 <div className="flex flex-col items-center justify-center px-6 py-8 lg:mb-16 mx-auto">
                     <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900">
-                        <img className="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo" />
+                        <img className="w-8 h-8 mr-2" src="../src/assets/images/ong.png" alt="logo" />
                     </a>
                     <div className="w-full rounded-lg  md:mt-0 sm:max-w-md xl:p-0 lg:py-22 shadow-xl shadow-[rgba(46,58,44,0.24)]">
                         <div className="p-6 space-y-4 md:space-y-6 sm:p-86">
@@ -86,8 +86,8 @@ const Login = () => {
                                 </div>
                             </form>
                             {error && <p className='text-red-500'>{error}</p>}
-                        <p class="text-sm font-light text-gray-500 ">
-                      No tienes cuenta? <Link to={'/register'} class="font-medium text-green-600 hover:underline ">Registrate</Link>
+                        <p className="text-sm font-light text-gray-500 ">
+                      No tienes cuenta? <Link to={'/register'} className="font-medium text-green-600 hover:underline ">Registrate</Link>
                   </p>
                         </div>
                     </div>

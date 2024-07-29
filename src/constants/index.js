@@ -12,6 +12,10 @@ export const navLinks = [
     title: "Actividades",
   },
   {
+    href: "jobs",
+    title: "Nuestras ubicaciones",
+  },
+  {
     href: "contact",
     title: "Contacto",
   }
@@ -45,17 +49,17 @@ export const activities = [
 export const mision = [
   {
     id: 1,
-    title: 'Campañas digitales',
-    description: 'Descubre cómo nuestras campañas digitales están impactando positivamente en la comunidad, llegando a más personas y generando conciencia sobre importantes causas sociales.',
+    title: 'Transforma Vidas Hoy',
+    description: 'Descubre cómo A.P.P.A.Di está creando oportunidades y brindando apoyo a personas con discapacidad en nuestra comunidad.',
   },
   {
     id: 2,
-    title: 'Oportunidades de empleo',
-    description: 'Conectamos a individuos talentosos con oportunidades laborales significativas, ayudándoles a construir carreras exitosas y estables.',
+    title: 'Oportunidades Laborales',
+    description: 'Ayudamos a personas con discapacidad a encontrar empleos significativos, fomentando carreras exitosas y estables.',
   },
   {
     id: 3,
-    title: 'Apoyo comunitario',
-    description: 'Brindamos apoyo vital a comunidades locales a través de iniciativas de desarrollo comunitario y programas de ayuda social, promoviendo la equidad y la inclusión.',
+    title: 'Talleres Inclusivos',
+    description: 'Realizamos talleres de carpintería, fabricación de gasas y apósitos maternales, y velas, proporcionando habilidades prácticas y creativas para personas con discapacidad.',
   },
 ];

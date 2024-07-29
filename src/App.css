@@ -26,13 +26,10 @@ body {
 .headingColor{
   color:'#0067FF'
 }
-.hoverColor{
-  background:#A9D9B5;
-}
+
 .activeColor{
   background: #0A732F;
 }
-
 
 .th-title{
   padding-left: 1rem;

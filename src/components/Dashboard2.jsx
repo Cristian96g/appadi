@@ -5,24 +5,23 @@ import { truncateText } from "../utils";
 import { Link } from "react-router-dom";
 
 const Dashboard = () => {
-    const cardChiqita = [
+    const [cardChiqita, setCardChiqita] = useState([
         {
-            num: "2",
+            num: 0,
             title: "Usuarios",
             href: "users"
-
         },
         {
-            num: "2",
+            num: 0,
             title: "Blog",
             href: "blog"
         },
         {
-            num: "2",
+            num: 0,
             title: "Comentarios",
             href: "comment"
         },
-    ]
+    ]);
 
     const [users, setUsers] = useState([]);
     const [blogs, setBlogs] = useState([]);
@@ -33,6 +32,11 @@ const Dashboard = () => {
             try {
                 const response = await axios.get(' http://localhost:3000/users/');
                 setUsers(response.data);
+                setCardChiqita(prevState => {
+                    const newState = [...prevState];
+                    newState[0].num = response.data.length;
+                    return newState;
+                });
             } catch (error) {
                 console.log('Error fetching the user:', error);
                 setError('Error fetching the user. Please try again later.');
@@ -45,9 +49,14 @@ const Dashboard = () => {
             try {
                 const response = await axios.get(' http://localhost:3000/blogs/');
                 setBlogs(response.data);
+                setCardChiqita(prevState => {
+                    const newState = [...prevState];
+                    newState[1].num = response.data.length;
+                    return newState;
+                });
             } catch (error) {
-                console.log('Error fetching the user:', error);
-                setError('Error fetching the user. Please try again later.');
+                console.log('Error fetching the blog:', error);
+                setError('Error fetching the blog. Please try again later.');
             }
         };
 
@@ -58,7 +67,7 @@ const Dashboard = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
                 {/* card chiquitas */}
                 {cardChiqita.map((card) => (
-                    <div className="bg-primary text-white rounded-md p-6 shadow-md shadow-black/5">
+                    <div className="bg-primary text-white rounded-md p-6 shadow-md shadow-black/5" key={card.title}>
                         <div className="flex justify-between mb-6">
                             <div className="">
                                 <div className="flex items-center mb-1">
@@ -90,9 +99,9 @@ const Dashboard = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {users.map((user) => (
-                                        <tr className="primaryColor">
-                                            <th className="th-title">{user.name}</th>
+                                    {users.slice(0,3).map((user) => (
+                                        <tr className="primaryColor" key={user._id}>
+                                            <th className="th-title">{user.role}</th>
                                             <td className="th-title">{user.name}</td>
                                             <td className="th-title">
                                                 <div className="flex items-center">
@@ -125,8 +134,8 @@ const Dashboard = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {blogs.map((blog) => (
-                                        <tr className="primaryColor">
+                                    {blogs.slice(0,3).map((blog) => (
+                                        <tr className="primaryColor" key={blog.title}>
                                             <th className="th-title">{blog.title}</th>
                                             <td className="th-title">{truncateText(blog.content,60)}</td>
                                             <td className="th-title">{blog.date}</td>
@@ -160,8 +169,8 @@ const Dashboard = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {users.map((user) => (
-                                    <tr className="primaryColor">
+                                {users.slice(0,3).map((user) => (
+                                    <tr className="primaryColor" key={user.name}>
                                         <th className="th-table">{user.user}</th>
                                         <td className="th-table">{user.name}</td>
                                         <td className="th-table min-w-140-px">

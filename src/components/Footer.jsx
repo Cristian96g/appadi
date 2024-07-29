@@ -13,7 +13,7 @@ const Footer = () => {
                 <div className="md:flex md:justify-between">
                     <div className="mb-6 md:mb-0">
                         <a href="https://flowbite.com/" className="flex items-center">
-                            <img src={ongImage} class="h-14 me-3" alt="ong image" />
+                            <img src={ongImage} className="h-14 me-3" alt="ong image" />
                         </a>
                     </div>
                     <div className="grid grid-cols-2 gap-8 sm:gap-6">
@@ -21,10 +21,10 @@ const Footer = () => {
                             <h2 className="mb-6 text-sm font-semibold text-green-700 uppercase">Nosotros</h2>
                             <ul className="text-green-500  font-medium">
                                 {navLinks.map((nav) => (
-                                    <li className="mb-2" key={nav.id}>
+                                    <li className="mb-2" key={nav.href}>
                                         <NavLink
                                             to={`/${nav.id}`}
-                                            lass="hover:underline"
+                                            className="hover:underline"
                                         >
                                             {nav.title}
                                         </NavLink>

@@ -7,13 +7,13 @@ const Hero = () => {
       <div className="flex items-center text-center lg:text-left  lg:w-1/2">
         <div>
           <h2>
-          <span className="text-green-600">Appadi</span> Creando trabajos y apoyando comunidades para un impacto positivo.
+          <span className="text-green-600">Promoviendo</span> la Igualdad de Oportunidades para Personas con Discapacidad
           </h2>
           <p className="mt-2 text-sm text-gray-500 md:text-base">
-          Nos dedicamos a crear oportunidades laborales significativas y a fortalecer comunidades mediante programas de apoyo integral, contribuyendo positivamente al desarrollo local y social.
+          A.P.P.A.Di trabaja para la inclusión plena de personas con discapacidad, en colaboración con el Estado y la sociedad civil.
           </p>
           <div className="flex justify-center gap-2 lg:justify-start mt-6">
-          <Button text={"Descubre más"} />
+          <Button to={"/about"} text={"Descubre más"} />
  
           </div>
         </div>

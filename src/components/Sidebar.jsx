@@ -31,18 +31,25 @@ const Sidebar = () => {
             title: "Blog"
         },
         {
+            a: "/admin/jobs",
+            title: "Trabajos"
+        },
+        {
             a: "/admin/users",
             title: "Users"
         },
         {
             a: "/admin/comment",
             title: "Comentarios"
+        },{
+            a: "/admin/test",
+            title: "test"
         },
 
     ]
     return (
         <>
-            <div className={`h-full fixed lg:static w-[80%] md:w-[40%] lg:w-full transition-all z-50 duration-300 ${showMenu ? "left-0" : "-left-full"}`}>
+            <div className={`h-full bg-white fixed lg:static w-[80%] md:w-[40%] lg:w-full transition-all z-50 duration-300 ${showMenu ? "left-0" : "-left-full"}`}>
                 {/* Profile */}
                 <div className='flex flex-col items-center justify-center p-8 gap-2 h-[30vh]'>
                     <img src="https://placehold.co/400" alt="" className='w-20 h-20 object-cover rounded-full ring-2 ring-primary-100' />
@@ -53,10 +60,15 @@ const Sidebar = () => {
                 <div className='bg-primary-300 p-8 rounded-tr-[100px] h-[70vh]  flex flex-col justify-between gap-8'>
                     <nav className='flex flex-col gap-2'>
                         {links.map((link) => (
-                            <Link to={link.a} className={`flex items-center gap-4  py-2 px-4 rounded-xl hover:hoverColor transition-colors ${location.pathname === link.a ? 'text-white activeColor' : 'primaryColor'}`}><RiHome3Line />
+                            <Link to={link.a} className={`flex items-center gap-4  py-2 px-4 rounded-xl hover:bg-green-600
+                                hover:text-white
+                                transition-colors ${location.pathname === link.a ? 'text-white activeColor' : 'primaryColor'}`}
+                            key={link.a}
+                            ><RiHome3Line />
                                 {link.title}</Link>
                         ))}
-                    <button onClick={handleLogout} className="flex items-center gap-4  py-2 px-4 rounded-xl hover:hoverColor transition-colors primaryColor">
+                    <button onClick={handleLogout} className="flex items-center gap-4  py-2 px-4 rounded-xl  hover:bg-green-600
+                                hover:text-white transition-colors primaryColor">
                         <RiLogoutBoxLine /> Cerrar sesion
                     </button>
                     </nav>
@@ -67,7 +79,7 @@ const Sidebar = () => {
                 </div>
 
             </div>
-            <button onClick={() => setShowMenu(!showMenu)} className='lg:hidden fixed right-4 bottom-4 text-2xl bg-primary-900 p-3 rounded-full text-white z-50'>
+            <button onClick={() => setShowMenu(!showMenu)} className='lg:hidden fixed right-4 bottom-4 text-2xl bg-green-900 p-3 rounded-full text-white z-50'>
                 {
                     showMenu ? <IoCloseOutline /> : <IoMenu />
                 }

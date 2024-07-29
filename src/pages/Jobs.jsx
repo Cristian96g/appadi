@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import PageBanner from '../components/PageBanner';
-import ActivityCard from '../components/ActivityCard';
 import axios from 'axios';
+import JobsCard from '../components/JobsCard';
 
-const Activities = () => {
-  const [blogs, setBlogs] = useState([]);
+const Jobs = () => {
+  const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
 
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/blogs/');
-        console.log('Blogs fetched:', response.data);
-        setBlogs(response.data);
+        const response = await axios.get('http://localhost:3000/jobs/');
+        console.log('Jobs fetched:', response.data);
+        setJobs(response.data);
       } catch (error) {
         console.log('Error fetching the blogs:', error);
         setError('Error fetching the blogs. Please try again later.');
@@ -35,9 +35,9 @@ const Activities = () => {
               We use an agile approach to test assumptions and connect with the needs of your audience early and often.
             </p>
           </div>
-          <div className="grid gap-8 lg:grid-cols-3">
-            {blogs.map((blog, index) => (
-              <ActivityCard blog={blog} key={blog._id} />
+          <div className="grid gap-8 lg:grid-cols-2">
+            {jobs.map((job, index) => (
+              <JobsCard job={job} key={job._id} />
             ))}
           </div>
         </div>
@@ -46,4 +46,4 @@ const Activities = () => {
   );
 };
 
-export default Activities;
+export default Jobs;

@@ -2,7 +2,8 @@ import React from 'react'
 import Hero from '../components/Hero'
 import MissionVision from '../components/MissionVision'
 import ActivitiesComponent from '../components/ActivitiesComponent'
-import SocialMedia from '../components/SocialMedia'
+import Gallery from '../components/Gallery'
+import JobsComponent from '../components/JobsComponent'
 
 const Home = () => {
     return (
@@ -10,7 +11,8 @@ const Home = () => {
             <Hero />
             <MissionVision />
             <ActivitiesComponent />
-            <SocialMedia />
+            <JobsComponent/>
+            <Gallery />
         </div>
     )
 }

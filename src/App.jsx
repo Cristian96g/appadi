@@ -20,6 +20,14 @@ import Login from './pages/Login';
 import ProtectedRoutes from './utils/ProtectedRoutes';
 import Register from './pages/Register';
 import EditUser from './pages/user/EditUser';
+import DetailBlog from './pages/Blog/DetailBlog';
+import Test from './pages/Test';
+import Jobs from './pages/Jobs';
+import JobsDetail from './pages/JobsDetail';
+import Job from './pages/Jobs/Job';
+import CreateJob from './pages/Jobs/CreateJob';
+import DetailJob from './pages/Jobs/DetailJob';
+import EditJob from './pages/Jobs/EditJob';
 
 const App = () => {
   return (
@@ -30,6 +38,8 @@ const App = () => {
             <Route path='/' element={<Home />} />
             <Route path='/activities' element={<Activities />} />
             <Route path='/activities/:id' element={<ActivitiesDetail />} />
+            <Route path='/jobs' element={<Jobs />} />
+            <Route path='/jobs/:id' element={<JobsDetail />} />
             <Route path='/about' element={<About />} />
             <Route path='/contact' element={<Contact />} />
             <Route path='/login' element={<Login />} />
@@ -38,12 +48,18 @@ const App = () => {
           <Route element={<ProtectedRoutes role="admin" />}>
             <Route element={<AdminLayout />}>
               <Route path='/admin' element={<Admin />} />
+              <Route path='/admin/test' element={<Test />} />
               <Route path='/admin/users' element={<Users />} />
               <Route path='/admin/users/edit/:id' element={<EditUser />} />
               <Route path='/admin/users/detail/:id' element={<DetailUser />} />
               <Route path='/admin/blog' element={<Blog />} />
               <Route path='/admin/blog/create' element={<CreateBlog />} />
+              <Route path='/admin/blog/detail/:id' element={<DetailBlog />} />
               <Route path='/admin/blog/edit/:id' element={<EditBlog />} />
+              <Route path='/admin/jobs' element={<Job />} />
+              <Route path='/admin/job/create' element={<CreateJob />} />
+              <Route path='/admin/job/edit/:id' element={<EditJob />} />
+              <Route path='/admin/job/detail/:id' element={<DetailJob />} />
               <Route path='/admin/comment' element={<Comment />} />
               <Route path='/admin/comment/create' element={<CreateComment />} />
               <Route path='/admin/comment/edit/:id' element={<EditComment />} />

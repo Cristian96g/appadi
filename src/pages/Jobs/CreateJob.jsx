@@ -8,15 +8,17 @@ import {
   ref,
   uploadBytesResumable,
 } from 'firebase/storage';
-import { app } from '../../firebase.js';  // Asegúrate de que la configuración de Firebase esté exportada desde este archivo
+import { app } from '../../firebase.js';
 
-const CreateBlog = () => {
+const CreateJob = () => {
   const navigate = useNavigate();
-  const [blogData, setBlogData] = useState({
+  const [jobData, setJobData] = useState({
     title: "",
     content: "",
-    author: "666fb12dbbc2bd9934d94fa4", // ID del autor por defecto
-    imageUrl: "", // Añadir campo imageUrl
+    location: "",
+    phone: "",
+    email: "",
+    imageUrl: "",
   });
   const [image, setImage] = useState(null);
   const [imageUploadProgress, setImageUploadProgress] = useState(null);
@@ -52,7 +54,7 @@ const CreateBlog = () => {
             getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
               setImageUploadProgress(null);
               setImageUploadError(null);
-              setBlogData(prevData => ({ ...prevData, imageUrl: downloadURL }));
+              setJobData(prevData => ({ ...prevData, imageUrl: downloadURL }));
               resolve(downloadURL);
             });
           }
@@ -72,19 +74,19 @@ const CreateBlog = () => {
     const imageUrl = await handleUploadImage();
 
     if (imageUrl) {
-      const blogDataWithImage = {
-        ...blogData,
+      const jobDataWithImage = {
+        ...jobData,
         imageUrl: imageUrl,
       };
 
       try {
-        const res = await axios.post("http://localhost:3000/blogs", blogDataWithImage, {
+        const res = await axios.post("http://localhost:3000/jobs", jobDataWithImage, {
           headers: {
             'Content-Type': 'application/json'
           }
         });
         console.log(res);
-        navigate('/admin/blog');
+        navigate('/admin/jobs');
       } catch (error) {
         if (error.response && error.response.data) {
           setError(error.response.data.message);
@@ -98,7 +100,7 @@ const CreateBlog = () => {
 
   return (
     <div>
-      <HeaderAdmin title={"Crear"} text={"Blog"} />
+      <HeaderAdmin title={"Crear"} text={"Trabajo"} />
       <form onSubmit={handleCreate} className="mt-8 space-y-6">
         <div>
           <label htmlFor="title" className="block text-sm font-medium text-gray-700">
@@ -108,8 +110,8 @@ const CreateBlog = () => {
             type="text"
             id="title"
             name="title"
-            value={blogData.title}
-            onChange={(e) => setBlogData({ ...blogData, title: e.target.value })}
+            value={jobData.title}
+            onChange={(e) => setJobData({ ...jobData, title: e.target.value })}
             className="mt-1 p-2 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
             required
           />
@@ -121,10 +123,52 @@ const CreateBlog = () => {
           <textarea
             id="content"
             name="content"
-            value={blogData.content}
-            onChange={(e) => setBlogData({ ...blogData, content: e.target.value })}
+            value={jobData.content}
+            onChange={(e) => setJobData({ ...jobData, content: e.target.value })}
             className="mt-1 p-2 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
             rows="10"
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="location" className="block text-sm font-medium text-gray-700">
+            Ubicación
+          </label>
+          <input
+            type="text"
+            id="location"
+            name="location"
+            value={jobData.location}
+            onChange={(e) => setJobData({ ...jobData, location: e.target.value })}
+            className="mt-1 p-2 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
+            Teléfono
+          </label>
+          <input
+            type="text"
+            id="phone"
+            name="phone"
+            value={jobData.phone}
+            onChange={(e) => setJobData({ ...jobData, phone: e.target.value })}
+            className="mt-1 p-2 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+            Email
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={jobData.email}
+            onChange={(e) => setJobData({ ...jobData, email: e.target.value })}
+            className="mt-1 p-2 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
             required
           />
         </div>
@@ -148,7 +192,7 @@ const CreateBlog = () => {
             type="submit"
             className="mt-4 px-4 py-2 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700"
           >
-            Crear Blog
+            Crear Trabajo
           </button>
         </div>
       </form>
@@ -156,4 +200,4 @@ const CreateBlog = () => {
   );
 };
 
-export default CreateBlog;
+export default CreateJob;

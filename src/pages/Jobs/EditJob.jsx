@@ -4,24 +4,24 @@ import HeaderAdmin from '../../components/HeaderAdmin';
 import { app } from '../../firebase.js';
 import { getStorage, ref, deleteObject, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 
-const EditBlog = () => {
+const EditJob = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const [blog, setBlog] = useState({ title: '', content: '', imageUrl: '' });
+  const [job, setJob] = useState({ title: '', content: '', imageUrl: '', location: '', phone: '', email: '' });
   const [newImage, setNewImage] = useState(null);
   const [imageUploadProgress, setImageUploadProgress] = useState(null);
   const [imageUploadError, setImageUploadError] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/blogs/${id}`)
+    fetch(`http://localhost:3000/jobs/${id}`)
       .then(response => response.json())
-      .then(data => setBlog(data))
-      .catch(error => console.error('Error fetching blog:', error));
+      .then(data => setJob(data))
+      .catch(error => console.error('Error fetching job:', error));
   }, [id]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setBlog((prevBlog) => ({ ...prevBlog, [name]: value }));
+    setJob((prevJob) => ({ ...prevJob, [name]: value }));
   };
 
   const handleImageChange = (e) => {
@@ -31,13 +31,13 @@ const EditBlog = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
   
-    let updatedBlog = { ...blog };
+    let updatedJob = { ...job };
   
     if (newImage) {
       const storage = getStorage(app);
-      const oldImageRef = ref(storage, blog.imageUrl);
+      const oldImageRef = ref(storage, job.imageUrl);
   
-      if (blog.imageUrl) {
+      if (job.imageUrl) {
         try {
           await deleteObject(oldImageRef);
         } catch (error) {
@@ -64,57 +64,58 @@ const EditBlog = () => {
             const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
             setImageUploadProgress(null);
             setImageUploadError(null);
-            updatedBlog = { ...updatedBlog, imageUrl: downloadURL };
+            updatedJob = { ...updatedJob, imageUrl: downloadURL };
   
-            console.log('Updated:', updatedBlog);
+            console.log('Updated:', updatedJob);
   
-            const response = await fetch(`http://localhost:3000/blogs/${id}`, {
+            const response = await fetch(`http://localhost:3000/jobs/${id}`, {
               method: 'PUT',
               headers: {
                 'Content-Type': 'application/json',
               },
-              body: JSON.stringify(updatedBlog),
+              body: JSON.stringify(updatedJob),
             });
   
             if (!response.ok) {
-              throw new Error('Error updating blog');
+              throw new Error('Error updating job');
             }
   
             const data = await response.json();
-            console.log('Blog updated:', data);
-            navigate('/admin/blog');
+            console.log('Job updated:', data);
+            navigate('/admin/jobs');
           } catch (error) {
-            console.error('Error updating blog:', error);
+            console.error('Error updating job:', error);
           }
         }
       );
     } else {
       try {
-        console.log('Updated:', updatedBlog);
+        console.log('Updated:', updatedJob);
   
-        const response = await fetch(`http://localhost:3000/blogs/${id}`, {
+        const response = await fetch(`http://localhost:3000/jobs/${id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(updatedBlog),
+          body: JSON.stringify(updatedJob),
         });
   
         if (!response.ok) {
-          throw new Error('Error updating blog');
+          throw new Error('Error updating job');
         }
   
         const data = await response.json();
-        console.log('Blog updated:', data);
-        navigate('/admin/blog');
+        console.log('Job updated:', data);
+        navigate('/admin/jobs');
       } catch (error) {
-        console.error('Error updating blog:', error);
+        console.error('Error updating job:', error);
       }
     }
   };
+
   return (
     <div>
-      <HeaderAdmin title={"Editar blog"} text={blog.title} />
+      <HeaderAdmin title={"Editar trabajo"} text={job.title} />
       <form onSubmit={handleSubmit} className="mt-8 space-y-6">
         <div>
           <label htmlFor="title" className="block text-sm font-medium text-gray-700">
@@ -123,7 +124,46 @@ const EditBlog = () => {
           <input
             type="text"
             name="title"
-            value={blog.title}
+            value={job.title}
+            onChange={handleChange}
+            className="mt-1 p-2 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="location" className="block text-sm font-medium text-gray-700">
+            Ubicación
+          </label>
+          <input
+            type="text"
+            name="location"
+            value={job.location}
+            onChange={handleChange}
+            className="mt-1 p-2 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
+            Teléfono
+          </label>
+          <input
+            type="text"
+            name="phone"
+            value={job.phone}
+            onChange={handleChange}
+            className="mt-1 p-2 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+            Email
+          </label>
+          <input
+            type="email"
+            name="email"
+            value={job.email}
             onChange={handleChange}
             className="mt-1 p-2 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
             required
@@ -135,7 +175,7 @@ const EditBlog = () => {
           </label>
           <textarea
             name="content"
-            value={blog.content}
+            value={job.content}
             onChange={handleChange}
             className="mt-1 p-2 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
             rows="10"
@@ -146,7 +186,7 @@ const EditBlog = () => {
           <label htmlFor="imageUrl" className="block text-sm font-medium text-gray-700">
             Imagen
           </label>
-          {blog.imageUrl && <img src={blog.imageUrl} alt="Current" className="w-20 h-20 object-cover mb-2" />}
+          {job.imageUrl && <img src={job.imageUrl} alt="Current" className="w-20 h-20 object-cover mb-2" />}
           <input
             type="file"
             id="imageUrl"
@@ -162,7 +202,7 @@ const EditBlog = () => {
             type="submit"
             className="mt-4 px-4 py-2 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700"
           >
-            Editar Blog
+            Editar trabajo
           </button>
         </div>
       </form>
@@ -170,4 +210,4 @@ const EditBlog = () => {
   );
 };
 
-export default EditBlog;
+export default EditJob;

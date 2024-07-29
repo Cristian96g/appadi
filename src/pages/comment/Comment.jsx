@@ -71,22 +71,22 @@ const Comment = () => {
                                 </thead>
                                 <tbody>
                                     {comments.map((comment) => (
-                                        <tr className="primaryColor">
+                                        <tr className="primaryColor" key={comment._id}>
                                             <th className="th-title">{comment.blog?.title}</th>
                                             <td className="th-title">{comment.user?.username}</td>
                                             <td className="th-title max-w-[22rem] whitespace-normal">{comment.content}</td>
                                             <td class="td-button text-gray-900">
                                                 <div class="flex items-center space-x-4">
-                                                    <Link to={`/admin/comment/edit/${comment._id}`} class="button-table btn-edit">
+                                                    <Link to={`/admin/comment/edit/${comment._id}`} className="button-table btn-edit">
                                                         <FaPencilAlt className="h-4 w-4 mr-2 -ml-0.5" />
 
                                                         Edit
                                                     </Link>
-                                                    <Link to={`/admin/comment/detail/${comment._id}`}  class="button-table btn-preview">
+                                                    <Link to={`/admin/comment/detail/${comment._id}`}  className="button-table btn-preview">
                                                         <FaEye className="h-4 w-4 mr-2 -ml-0.5" />
                                                         Preview
                                                     </Link>
-                                                    <button type="button" onClick={() => openModal(comment)} class="button-table btn-delete">
+                                                    <button type="button" onClick={() => openModal(comment)} className="button-table btn-delete">
                                                         <RiDeleteBinLine className="h-4 w-4 mr-2 -ml-0.5" />
                                                         Delete
                                                     </button>

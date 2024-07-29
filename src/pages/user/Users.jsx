@@ -67,7 +67,7 @@ const Users = () => {
                                 </thead>
                                 <tbody>
                                     {users.map((user) => (
-                                        <tr className="primaryColor">
+                                        <tr className="primaryColor" key={user._id}>
                                             <th className="th-title">{user.role}</th>
                                             <td className="th-title">{user.name}</td>
                                      
