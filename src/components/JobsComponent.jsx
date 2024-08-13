@@ -11,7 +11,7 @@ const JobsComponent = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/blogs/');
+        const response = await axios.get('http://localhost:3000/jobs/');
         console.log('Blogs fetched:', response.data); // Verifica los datos aquí
         setJobs(response.data.slice(0, 4));
       } catch (error) {

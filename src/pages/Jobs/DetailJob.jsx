@@ -69,7 +69,7 @@ const DetailJob = () => {
                         {job.content}
                     </p>
                 </div>
-                <div className="max-w-80">
+                <div className="max-w-80 ">
                     <label htmlFor="image" className="block text-sm font-medium text-gray-700">
                         Imagen
                     </label>
