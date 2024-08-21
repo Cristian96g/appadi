@@ -8,7 +8,7 @@ const About = () => {
       <PageBanner title={"Quienes somos"} />
       <section className="container">
         <div className=" flex flex-col items-center px-4 py-8 mx-auto text-center">
-          <h2>
+          <h2 className="text-2xl md:text-3xl">
           Contribuyendo al <span className="text-green-500">bienestar comunitario</span>
           </h2>
           <p className="max-w-4xl mt-6 text-center text-gray-500 ">

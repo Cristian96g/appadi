@@ -1,31 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import PageBanner from '../components/PageBanner';
 import ActivityCard from '../components/ActivityCard';
-import axios from 'axios';
+import { workshops } from '../constants/index.js'
 
 const Activities = () => {
-  const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-
-    const fetchBlogs = async () => {
-      try {
-        const response = await axios.get('http://localhost:3000/blogs/');
-        console.log('Blogs fetched:', response.data);
-        setBlogs(response.data);
-      } catch (error) {
-        console.log('Error fetching the blogs:', error);
-        setError('Error fetching the blogs. Please try again later.');
-      }
-    };
-
-    fetchBlogs();
   }, []);
-
   return (
     <>
-      <PageBanner title={"Nuestros trabajos"} />
+      <PageBanner title={"Nuestros Talleres"} />
 
       <section className="container">
         <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
@@ -36,8 +21,8 @@ const Activities = () => {
             </p>
           </div>
           <div className="grid gap-8 lg:grid-cols-3">
-            {blogs.map((blog, index) => (
-              <ActivityCard blog={blog} key={blog._id} />
+            {workshops.map((workshop, index) => (
+              <ActivityCard workshop={workshop} key={workshop._id} />
             ))}
           </div>
         </div>

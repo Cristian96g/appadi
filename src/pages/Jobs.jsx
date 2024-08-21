@@ -1,27 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import PageBanner from '../components/PageBanner';
-import axios from 'axios';
 import JobsCard from '../components/JobsCard';
+import { jobs } from '../constants/index.js'
 
 const Jobs = () => {
-  const [jobs, setJobs] = useState([]);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-
-    const fetchBlogs = async () => {
-      try {
-        const response = await axios.get('http://localhost:3000/jobs/');
-        console.log('Jobs fetched:', response.data);
-        setJobs(response.data);
-      } catch (error) {
-        console.log('Error fetching the blogs:', error);
-        setError('Error fetching the blogs. Please try again later.');
-      }
-    };
-
-    fetchBlogs();
-  }, []);
 
   return (
     <>

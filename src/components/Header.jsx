@@ -1,20 +1,12 @@
-import React, { useState, useContext } from "react";
+import { useState } from "react";
 import { IoIosMenu, IoIosClose } from "react-icons/io";
 import { navLinks } from "../constants";
-import { NavLink, useNavigate } from "react-router-dom";
-import { ImDroplet } from "react-icons/im";
-import { AuthContext } from "../context/AuthContext";
+import { NavLink } from "react-router-dom";
+
 import ongImage from "../assets/images/ong.png"
 
 const Header = () => {
     const [open, setOpen] = useState(false);
-    const { user, logoutUser } = useContext(AuthContext);
-    const navigate = useNavigate();
-
-    const handleLogout = () => {
-        logoutUser();
-        navigate('/login');
-    };
 
     return (
         <header className="relative">
@@ -22,7 +14,7 @@ const Header = () => {
                 <div className="flex justify-between items-center py-6">
                     <div className="flex justify-start lg:w-0 lg:flex-1">
                         <a href="#hero">
-                            <img src={ongImage} alt="" className="h-16"/>
+                            <img src={ongImage} alt="" className="h-16" />
                         </a>
                     </div>
                     <div className="-mr-2 -my-2 md:hidden">
@@ -47,15 +39,6 @@ const Header = () => {
                                 {nav.title}
                             </NavLink>
                         ))}
-                        {user ? (
-                            <button onClick={handleLogout} className="text-[18px] font-medium text-green-500 hover:text-green-700 cursor-pointer">
-                                Logout
-                            </button>
-                        ) : (
-                            <NavLink to="/login" className="text-[18px] font-medium text-green-500 hover:text-green-700 cursor-pointer">
-                                Login
-                            </NavLink>
-                        )}
                     </nav>
                 </div>
             </div>
@@ -73,15 +56,6 @@ const Header = () => {
                             </span>
                         </NavLink>
                     ))}
-                    {user ? (
-                        <button onClick={handleLogout} className="block w-full text-left text-base -m-3 p-3 font-medium text-green-500 hover:text-green-700 hover:bg-gray-50 cursor-pointer">
-                            Logout
-                        </button>
-                    ) : (
-                        <NavLink to="/login" className="block w-full text-left text-base -m-3 p-3 font-medium text-green-500 hover:text-green-700 hover:bg-gray-50 cursor-pointer">
-                            Login
-                        </NavLink>
-                    )}
                 </div>
             </div>
         </header>
