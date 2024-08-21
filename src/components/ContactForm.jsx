@@ -24,7 +24,7 @@ const ContactForm = ({row, textButton}) => {
 
     return (
             <form onSubmit={handleSubmit(onSubmit)} id="form" action="" method="POST">
-
+<h2 className='text-1xl pb-4 pt-6 text-gray-900'>Dejanos tu consulta:</h2>
                 <div className="mb-6">
                     <input
                         {...register('nombre', { required: "*El nombre es requerido" })}
@@ -65,10 +65,8 @@ const ContactForm = ({row, textButton}) => {
                     {errors.mensaje && <p className="text-red-500">{errors.mensaje.message}</p>}
                 </div>
                 <div>
-                    <Button
-                        // disabled={isSubmitting}
+                    <Button className={"mb-6"}
                         text={textButton}
-                        // className={'text-white bg-[#f58634] mb-6 md:mb-0'}
                         >
                     </Button>
                 </div>

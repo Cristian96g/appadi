@@ -57,8 +57,8 @@ const Contact = () => {
                   </li>
                 </ul>
               </div>
-              <div className="card h-fit max-w-6xl px-5 md:p-4 md:pt-0" id="form">
-                <div className="relative rounded-lg bg-white px-8 shadow-xl shadow-[rgba(46,58,44,0.24)] sm:p-12">
+              <div className="card h-fit max-w-6xl px-0 md:px-5 md:p-4 md:pt-0" id="form">
+                <div className="relative rounded-lg bg-white  px-8 shadow-xl shadow-[rgba(46,58,44,0.24)] sm:p-12">
                   <ContactForm row={"5"} textButton={"Enviar"}/>
                   <div>
                   </div>
@@ -69,7 +69,7 @@ const Contact = () => {
         </div>
       </div>
 
-      <div className="bg-white container max-w-6xl mx-auto pt-6">
+      <div className="bg-white container max-w-6xl mx-auto pt-0 md:pt-6">
         <div className=" px-6 py-12">
           <div className="text-center">
             <p className="font-medium color__sub">Ubicación</p>

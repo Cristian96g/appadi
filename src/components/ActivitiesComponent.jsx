@@ -45,7 +45,7 @@ const ActivitiesComponent = () => {
           ))}
         </div>
 
-        <div className="mt-12 text-center">
+        <div className="mt-2 md:mt-12 text-center">
           <Button
             to={"/activities"}
             className="inline-block rounded bg-green-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-green-700 focus:outline-none focus:ring focus:ring-yellow-400"
