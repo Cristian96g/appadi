@@ -1,5 +1,7 @@
 import AboutSection from "../components/AboutSection"
 import PageBanner from "../components/PageBanner"
+import imgFoundation from '../assets/images/foundation.jpg'
+import imgEquipo from '../assets/images/equipo.jpg'
 
 
 const About = () => {
@@ -20,14 +22,14 @@ const About = () => {
         
 
         <AboutSection 
-        imageSrc="../src/assets/images/foundation.jpg" 
+        imageSrc={imgFoundation} 
         imageAlt="imagen ong" 
         title="Nuestro hogar es un espacio de esperanza y comunidad" 
         text={"Nuestro edificio principal, ubicado en el corazón de la ciudad, es un espacio acogedor y abierto a todos. Aquí es donde organizamos nuestras actividades, talleres y reuniones. Es un lugar lleno de vida y esperanza, donde cada día trabajamos para construir un futuro mejor para nuestra comunidad."} 
         imagePosition="right" // Imagen a la derecha
       />
       <AboutSection 
-        imageSrc="../src/assets/images/equipo.jpg" 
+        imageSrc={imgEquipo}
         imageAlt="Equipo de la ong" 
         title="Nuestro equipo cuenta con personas apasionadas y comprometidas" 
         text={"Nuestro equipo está compuesto por personas apasionadas y dedicadas, provenientes de diversos ámbitos profesionales. Juntos, trabajamos incansablemente para brindar apoyo y oportunidades a quienes más lo necesitan. Creemos en el poder de la colaboración y en la fuerza de nuestra comunidad para lograr grandes cambios."} 
